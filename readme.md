@@ -22,8 +22,6 @@ A backend system for a task tracking and management platform that facilitates co
   - Add comments and attachments to tasks.
   - Task updates and comments restricted to task owners and assignees.
 
-- **Real-time Notifications:**
-  - Receive notifications when tasks are assigned or updated (via WebSockets).
 
 ## Technologies Used
 

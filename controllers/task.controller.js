@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
   
-// Add a comment to a task
+
 async function addComment(req, res) {
     try {
       const { id } = req.params;
@@ -35,7 +35,7 @@ async function addComment(req, res) {
     }
   };
   
-  // Upload an attachment to a task
+
 async function uploadAttachment(req, res) {
     try {
       const { id } = req.params;
@@ -54,7 +54,7 @@ async function uploadAttachment(req, res) {
   };
   
 
-// Create a new task
+
 async function createTask(req, res) {
   try {
     const { title, description, dueDate, assignedTo, team } = req.body;
@@ -74,7 +74,7 @@ async function createTask(req, res) {
   }
 };
 
-// Get tasks assigned to the current user
+
 async function getUserTasks(req, res) {
   try {
     const tasks = await Task.find({ assignedTo: req.user._id }).populate('assignedTo').exec();
@@ -84,7 +84,7 @@ async function getUserTasks(req, res) {
   }
 };
 
-// Update task status (e.g., to 'in-progress' or 'completed')
+
 async function updateTaskStatus(req, res) {
   try {
     const { id } = req.params;
@@ -101,7 +101,7 @@ async function updateTaskStatus(req, res) {
   }
 };
 
-// Assign task to another user
+
 async function assignTask(req, res) {
   try {
     const { id } = req.params;
@@ -118,7 +118,7 @@ async function assignTask(req, res) {
   }
 };
 
-// Delete a task
+
 async function deleteTask(req, res) {
   try {
     const { id } = req.params;
@@ -133,7 +133,7 @@ async function deleteTask(req, res) {
 };
 
 
-// fetch all the task by status
+
 async function getTasksByStatus(req, res){
     try {
       const { status } = req.query;
