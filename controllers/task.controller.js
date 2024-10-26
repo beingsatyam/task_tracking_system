@@ -7,7 +7,7 @@ const path = require('path');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, 'uploads/'); // Save files to 'uploads' folder
+      cb(null, 'uploads/'); 
     },
     filename: (req, file, cb) => {
       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
   
-  // Add a comment to a task
+// Add a comment to a task
 async function addComment(req, res) {
     try {
       const { id } = req.params;
@@ -111,6 +111,8 @@ async function assignTask(req, res) {
     if (!task) return res.status(404).json({ error: 'Task not found' });
 
     res.status(200).json({ message: 'Task assigned successfully', task });
+
+
   } catch (error) {
     res.status(500).json({ error: 'Failed to assign task' });
   }
@@ -130,6 +132,8 @@ async function deleteTask(req, res) {
   }
 };
 
+
+// fetch all the task by status
 async function getTasksByStatus(req, res){
     try {
       const { status } = req.query;
@@ -152,10 +156,36 @@ async function getTasksByStatus(req, res){
   
       res.json(tasks);
     } catch (error) {
-      res.status(500).json({ error: 'Failed to fetch tasks' });
+      res.status(500).json({ error: `Failed to tasks ${error}` });
     }
   };
 
+
+async function searchTasks(req, res) {
+    try {
+
+      
+      const filter = {};
+      if (req.query.title) {
+        filter.title = { $regex: req.query.title, $options: 'i' }; 
+      }
+      if (req.query.description) {
+        filter.description = { $regex: req.query.description, $options: 'i' };
+      }
+  
+    
+      const tasks = await Task.find(filter);
+  
+      if (!tasks.length) {
+        return res.status(404).json({ message: 'No tasks found matching your search criteria.' });
+      }
+  
+      res.json({ tasks });
+    } catch (error) {
+      res.status(500).json({ error: `Failed to search tasks ${error}`});
+    }
+};
+  
 
 module.exports = {
   createTask,
@@ -166,5 +196,6 @@ module.exports = {
   addComment,
   uploadAttachment,
   getTasksByStatus,
+  searchTasks,
   upload
 };
