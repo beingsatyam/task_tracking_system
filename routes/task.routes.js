@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post('/', validUser, validateTaskCreation, createTask);
 router.get('/status', validUser, getTasksByStatus);
-router.get('/assigned', validUser, getUserTasks);
+router.get('/', validUser, getUserTasks);
 router.put('/:id/status', validUser,taskParticipant , updateTaskStatus);
 router.put('/:id/assign', validUser, taskOwner ,  assignTask);
 router.delete('/:id', validUser, taskOwner, deleteTask);

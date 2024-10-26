@@ -97,6 +97,8 @@ A backend system for a task tracking and management platform that facilitates co
 | GET    | `/api/tasks/search` | Search tasks by title/description   |
 | PUT    | `/api/tasks/:id`    | Update task status                  |
 | DELETE | `/api/tasks/:id`    | Delete task (only by task owner)    |
+| PUT | `/api/tasks/:id/comment`    | add comment                    |
+| PUT | `/api/tasks/:id/attachment`    | add attachment              |
 
 ### **Team Management:**
 | Method | Endpoint            | Description                     |
@@ -105,6 +107,8 @@ A backend system for a task tracking and management platform that facilitates co
 | POST   | `/api/teams/invite` | Invite members to join team     |
 
 
+
+**Please refer to the Postman collection added in the repository for more details related to the endpoints and sample inputs.**
 
 
 

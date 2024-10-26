@@ -81,7 +81,7 @@ async function createTask(req, res) {
 
 async function getUserTasks(req, res) {
   try {
-    const tasks = await Task.find({ assignedTo: req.user._id }).populate('assignedTo').exec();
+    const tasks = await Task.find({ assignedTo: req.user._id }).populate('assignedTo' ,'name email').exec();
     res.status(200).json({ tasks });
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch tasks' });
