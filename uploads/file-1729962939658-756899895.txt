@@ -1,0 +1,159 @@
+Product: Fire,
+Sum Insured: 40000000,
+Risk Location Pin code: 400081,
+Risk Details: elementary school,
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~ SI Bifurcation ~~~~~~~~~~~~~~~~~~~~~~~~~~
+Building: 
+Building Including Plinth & Foundation: 
+Building Including Compound Wall: 
+Plant & Machinery: 
+Electronic equipment: 
+Furniture fixture fittings: 
+Contents (excluding jewellery and valuables): 
+Landscaping: 
+Finished goods: 
+Raw Material: 
+Stocks in process: 
+
+Terrorism Cover: Yes / No,
+Age of Building: x yrs / Not opted,
+Basement Exposure: car parking / Utilities / Others / None,
+Claim Experience: x claims,
+Construction Quality Rating: 5 star / 4 star / 3 star / kuttcha construction / Not Applicable,
+Distance from Water Body: x km / Not Applicable,
+Distance of Fire Brigade: x km / Not Applicable,
+Electrical Installation at risk premises: No loose wiring / proper cabling / Not Applicable ,
+Fire Fighting: Hydrant + Sprinkler+ Portable Fire fighting system / Any one Fire Equipment Available / No Fire Fighting Equipment Available / Information not available,
+Floor detail: x th floor / basement / Ground Floor,
+Annual Maintenance detail : Yes / No
+Insured name: Test User,
+Occupancy Type: Working / Silent / Not Applicable,
+Security Watch: 24x7 Availability of Security / Not Applicable,
+
+Intermediary Code: 
+Risk Address:
+Source: Agency / Mid-Market / Banca funded / Banca non-funded,
+Finished goods Description:
+Raw Material Description:
+Stock Description:
+Full Quote: Yes / No
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~ Sections ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Fire Loss of Profit Section: Yes / No,
+Annual Gross Profit: 10000,
+Indemnity period: 3/6/9/12/15/18/24/30/36 Months,
+Index of Business Activity: Turnover / Output / Revenue,
+Basis of Sum Insured: Addition / Difference / Revenue
+Accumulation of Stock clause: Yes / No,
+Auditor fees: Yes / No,
+FLOP Premise Extension for customer: Yes / No
+FLOP Premise Extension for supplier: Yes / No
+FLOP Premise Extension for customer and supplier: Yes / No
+Premise Extension: NAMED / UNNAMED
+Premise Extension SI: x
+
+Burglary Section: Yes / No,
+Burglary Rate: x,
+Burglary Plant & Machinery SI: Yes / No,
+Burglary Electronic equipment SI: Yes / No,
+Burglary Furniture fixture fittings SI: Yes / No,
+Burglary Contents SI: Yes / No,
+Burglary Landscaping SI: Yes / No,
+Burglary Stocks SI: Yes / No,
+First Loss Limit: 25/50/100,
+Burglary Theft: Yes / No,
+RSMD: Yes / No,
+
+Plate Glass Section: Yes / No,
+Plate Glass Rate: x,
+Plate Glass SI: 10000,
+
+Neon Sign Section: Yes / No,
+Neon Sign Rate: x,
+Neon Sign SI: 10000,
+
+Machinery Breakdown Section: Yes / No,
+Machinery Breakdown Rate: x,
+Machinery Breakdown SI: 10000,
+
+Electronic Equipment Section: Yes / No,
+Electronic Equipment Rate: x,
+Electronic Equipment SI: 10000,
+STFI Cover: Yes / No,
+Earthquake Cover: Yes / No,
+
+
+Portable Electronic Equipment Section: Yes / No,
+Portable Electronic Equipment Rate : x,
+Portable Electronic Equipment SI: 10000,
+Omission to insure upto 5% of PEEI: Yes / No,
+Electrical & Mechanical Breakdown: Yes / No,
+
+
+Money Section: Yes / No,
+Money in Safe: 10000,
+Money in Safe Rate: x,
+Money at Counter: 10000,
+Money at Counter Rate: x,
+Money in Transit Annual Carrying Limit: 10000,
+Money in Transit Rate: x,
+Money in Transit Single Carrying Limit: 10000,
+
+Baggage Section: Yes / No,
+Baggage Rate : x,
+Baggage SI: 10000,
+
+Employees Fidelity Guarantee Section: Yes / No,
+Employees Fidelity Guarantee Rate: x,
+EFG SI: 10000,
+Limit per Employee: 10000,
+Per Event Limit: 10000,
+No of Employees: 5,
+Type of Policy: Named / Designation / Unnamed,
+
+Public Liability Section: Yes / No,
+Public Liability SI: 10000,
+Public Liability Rate: x
+
+
+~~~~~~~~~~~~~~~~~~~~~ Inbuilt Covers for fire section ~~~~~~~~~~~~~~~~~~~~~
+
+Declaration for Stock: Yes / No,
+Floater for stock: Yes / No,
+Claim preparation cost: 
+Temporary Repair Clause: 
+On Account Of Payment Clause: Nil/5/10/15/20/25
+Contract Price Insurance Clause: 
+Customers Consigned Goods Custody & Control Clause:
+
+~~~~~~~~~~~~~~~~~~~~~ Optional Covers for fire section ~~~~~~~~~~~~~~~~~~~~~
+
+Accidental Damage: 
+Loss Minimization: 
+Extra Expenses: 
+Involuntary Betterment: 
+
+Loss of Rent:
+Loss of Rent Indemnity period: 3/6/9/12/18/24/36 Months
+
+Additional Expense of Rent for Alternative Accommodation:
+Additional Expense of Rent Indemnity period: 3/6/9/12/18/24/36 Months
+
+Contract Works: 
+
+Escalation: Yes / No
+Escalation Percentage: 5/10/15/20/25
+
+Brand and Label Clause: 
+Dynamo Clause: 
+Leakage and Overflowing: 
+Contamination and Comingling Clause: 
+Deterioration of Stocks Accidental Power Failure:  
+Deterioration of Stocks Change in Temperature: 
+Impact Damage:  
+Molten Metal Spillage Property Damage: 
+Crane Hiring Charges: 
+Omission to Insure Additions or Extensions: 
+Broad Water Damage Clause:
