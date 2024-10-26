@@ -45,6 +45,7 @@ A backend system for a task tracking and management platform that facilitates co
 2. **Install Dependencies**
   ```bash
   npm install
+  ```
 
 
 
