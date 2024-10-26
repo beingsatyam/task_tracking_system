@@ -1,4 +1,8 @@
+const { log } = require('console');
 const Task = require('../models/task.model');
+const User = require('../models/user.model');
+const emailService = require('../utils/EmailService');
+
 
 const multer = require('multer');
 const path = require('path');
@@ -7,7 +11,7 @@ const path = require('path');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, 'uploads/'); // Save files to 'uploads' folder
+      cb(null, 'uploads/'); 
     },
     filename: (req, file, cb) => {
       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -17,7 +21,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
   
-  // Add a comment to a task
+
 async function addComment(req, res) {
     try {
       const { id } = req.params;
@@ -35,7 +39,7 @@ async function addComment(req, res) {
     }
   };
   
-  // Upload an attachment to a task
+
 async function uploadAttachment(req, res) {
     try {
       const { id } = req.params;
@@ -54,7 +58,7 @@ async function uploadAttachment(req, res) {
   };
   
 
-// Create a new task
+
 async function createTask(req, res) {
   try {
     const { title, description, dueDate, assignedTo, team } = req.body;
@@ -74,7 +78,7 @@ async function createTask(req, res) {
   }
 };
 
-// Get tasks assigned to the current user
+
 async function getUserTasks(req, res) {
   try {
     const tasks = await Task.find({ assignedTo: req.user._id }).populate('assignedTo').exec();
@@ -84,7 +88,7 @@ async function getUserTasks(req, res) {
   }
 };
 
-// Update task status (e.g., to 'in-progress' or 'completed')
+
 async function updateTaskStatus(req, res) {
   try {
     const { id } = req.params;
@@ -101,7 +105,7 @@ async function updateTaskStatus(req, res) {
   }
 };
 
-// Assign task to another user
+
 async function assignTask(req, res) {
   try {
     const { id } = req.params;
@@ -110,13 +114,26 @@ async function assignTask(req, res) {
     const task = await Task.findByIdAndUpdate(id, { assignedTo }, { new: true });
     if (!task) return res.status(404).json({ error: 'Task not found' });
 
+    console.log(assignedTo);
+
+    const user = await User.findById(assignedTo).select('-password');
+
+    console.log(user.email);
+
+    emailService.sendEmail(user.email, `Task ${task.title} : Assignment`, `Dear ${user.name},\n\n You have been assigned a new task ${task.title}`)
+            
+
+
+
     res.status(200).json({ message: 'Task assigned successfully', task });
+
+
   } catch (error) {
-    res.status(500).json({ error: 'Failed to assign task' });
+    res.status(500).json({ error: `Failed to assign task ${error}` });
   }
 };
 
-// Delete a task
+
 async function deleteTask(req, res) {
   try {
     const { id } = req.params;
@@ -130,6 +147,8 @@ async function deleteTask(req, res) {
   }
 };
 
+
+
 async function getTasksByStatus(req, res){
     try {
       const { status } = req.query;
@@ -142,20 +161,52 @@ async function getTasksByStatus(req, res){
         
       }
 
-      const tasks = await Task.find({ status : status })
+
+      const tasks = await Task.find({ 
+        assignedTo: req.user._id, 
+        ...(status ? { status } : {}) 
+      })
+      .populate('createdBy', 'name email') 
+      .populate('assignedTo', 'name email'); 
 
       console.log(tasks);
-  
-    //   const tasks = await Task.find(status ? { status } : {})
-    //     .populate('owner', 'name email')
-    //     .populate('assignee', 'name email');
-  
-      res.json(tasks);
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to fetch tasks' });
-    }
-  };
 
+      if (!tasks.length) {
+        return res.status(404).json({ message: 'No tasks found!' });
+      }
+  
+    res.json(tasks);
+    } catch (error) {
+      res.status(500).json({ error: `Failed to tasks ${error}` });
+    }
+};
+
+
+async function searchTasks(req, res) {
+    try {
+
+      
+      const filter = {};
+      if (req.query.title) {
+        filter.title = { $regex: req.query.title, $options: 'i' }; 
+      }
+      if (req.query.description) {
+        filter.description = { $regex: req.query.description, $options: 'i' };
+      }
+  
+    
+      const tasks = await Task.find(filter);
+  
+      if (!tasks.length) {
+        return res.status(404).json({ message: 'No tasks found matching your search criteria.' });
+      }
+  
+      res.json({ tasks });
+    } catch (error) {
+      res.status(500).json({ error: `Failed to search tasks ${error}`});
+    }
+};
+  
 
 module.exports = {
   createTask,
@@ -166,5 +217,6 @@ module.exports = {
   addComment,
   uploadAttachment,
   getTasksByStatus,
+  searchTasks,
   upload
 };
