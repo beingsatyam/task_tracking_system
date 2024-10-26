@@ -39,21 +39,26 @@ A backend system for a task tracking and management platform that facilitates co
 ### Steps:
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-repository/task-tracking-backend.git
-   cd task-tracking-backend
+   git clone https://github.com/your-repository/task_tracking_backend.git
+   cd task_tracking_backend
+
+2. **Install Dependencies**
+  ```bash
+  npm install
 
 
-2. **Set up environment variables:**
+
+3. **Set up environment variables:**
     Create a `.env` file in the root directory and add the following:
 
     ```plaintext
-    PORT=3000
+    PORT=5000
     MONGO_URI=your-mongodb-connection-string
     JWT_SECRET=your-jwt-secret
 
-3. 2. **Run the application::**
+3. **Run the application::**
     ```bash
-    npm start
+    node index.js
 
 
 
