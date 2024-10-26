@@ -1,4 +1,8 @@
+const { log } = require('console');
 const Task = require('../models/task.model');
+const User = require('../models/user.model');
+const emailService = require('../utils/EmailService');
+
 
 const multer = require('multer');
 const path = require('path');
@@ -110,11 +114,22 @@ async function assignTask(req, res) {
     const task = await Task.findByIdAndUpdate(id, { assignedTo }, { new: true });
     if (!task) return res.status(404).json({ error: 'Task not found' });
 
+    console.log(assignedTo);
+
+    const user = await User.findById(assignedTo).select('-password');
+
+    console.log(user.email);
+
+    emailService.sendEmail(user.email, `Task ${task.title} : Assignment`, `Dear ${user.name},\n\n You have been assigned a new task ${task.title}`)
+            
+
+
+
     res.status(200).json({ message: 'Task assigned successfully', task });
 
 
   } catch (error) {
-    res.status(500).json({ error: 'Failed to assign task' });
+    res.status(500).json({ error: `Failed to assign task ${error}` });
   }
 };
 
@@ -146,19 +161,25 @@ async function getTasksByStatus(req, res){
         
       }
 
-      const tasks = await Task.find({ status : status })
+
+      const tasks = await Task.find({ 
+        assignedTo: req.user._id, 
+        ...(status ? { status } : {}) 
+      })
+      .populate('createdBy', 'name email') 
+      .populate('assignedTo', 'name email'); 
 
       console.log(tasks);
+
+      if (!tasks.length) {
+        return res.status(404).json({ message: 'No tasks found!' });
+      }
   
-    //   const tasks = await Task.find(status ? { status } : {})
-    //     .populate('owner', 'name email')
-    //     .populate('assignee', 'name email');
-  
-      res.json(tasks);
+    res.json(tasks);
     } catch (error) {
       res.status(500).json({ error: `Failed to tasks ${error}` });
     }
-  };
+};
 
 
 async function searchTasks(req, res) {

@@ -1,5 +1,7 @@
 const nodemailer = require('nodemailer');
+const dotenv = require('dotenv');
 
+dotenv.config();
 class EmailService {
     constructor({ service, user, pass }) {
         this.transporter = nodemailer.createTransport({
@@ -36,6 +38,5 @@ const emailService = new EmailService({
     pass: process.env.PASSWORD
 });
 
-
-
+console.log(process.env.EMAIL,  process.env.PASSWORD)
 module.exports = emailService;

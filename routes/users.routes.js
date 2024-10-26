@@ -3,7 +3,7 @@ const { check, validationResult } = require('express-validator');
 
 
 const { registerUser, loginUser, logoutUser, getUserProfile, updateUserProfile } = require('../controllers/user.controller');
-const { protect } = require('../middlewares/validate.middleware');
+const { validUser } = require('../middlewares/validate.middleware');
 
 const router = express.Router();
 
@@ -43,8 +43,8 @@ router.post('/login',
 );
 
 router.post('/logout', logoutUser);
-router.get('/profile', protect, getUserProfile);
-router.put('/profile', protect, updateUserProfile);
+router.get('/profile', validUser, getUserProfile);
+router.put('/profile', validUser, updateUserProfile);
 
 
 module.exports = router;
